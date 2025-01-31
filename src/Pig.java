@@ -1,4 +1,11 @@
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
+
 public class Pig {
+
+    private static final Set<Character> VOWELS = Set.of('a', 'e', 'i', 'o', 'u');
 
     /*
     * Create a method "pigLatin" that takes a string consisting of one or more 
@@ -26,10 +33,45 @@ public class Pig {
 
     // Implement your solution here!
     public static String pigLatin(String sentence) {
-        return null;
+        if(sentence.contains(" ")){
+            List<String> sentenceArray = Arrays.asList(sentence.split(" "));
+            sentence = modLogic(sentenceArray);
+        }else{
+            sentence = modLogic(sentence);
+        }
+
+        return sentence;
     }
 
+    public static String modLogic(String sentence){
+        char saveFirstLetter = sentence.charAt(0);
 
+        if(!VOWELS.contains(saveFirstLetter)){
+            sentence = sentence.substring(1) + saveFirstLetter + "ay";
+        }
+
+        return sentence;
+    }
+
+    public static String modLogic(List<String> sentence){
+
+        for(int i = 0; i < sentence.size(); i++){
+            char saveFirstLetter = sentence.get(i).charAt(0);
+
+            if(!VOWELS.contains(saveFirstLetter)){
+                String modWord = sentence.get(i).substring(1) + saveFirstLetter + "ay";
+                sentence.set(i, modWord);
+            }
+        }
+
+        String finalLine = "";
+
+        for(String word: sentence){
+            finalLine += word + " ";
+        }
+
+        return finalLine.substring(0, finalLine.length()-1);
+    }
 
 
 
