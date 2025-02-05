@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class Sponge {
 
   /*
@@ -22,6 +26,8 @@ public class Sponge {
    * .toCharArray() String method (e.g. myString.toCharArray())
    */
   public static void main(String[] args) {
+
+    System.out.println(spongeCase("test"));
     // Test cases
     assertEqual(1, spongeCase("spongebob"), "sPoNgEbOb");
     assertEqual(2, spongeCase("Who are YOU calling A Pinhead"), "wHo aRe yOu cAlLiNg a pInHeAd");
@@ -33,7 +39,49 @@ public class Sponge {
 
   // Implement your solution here!
   public static String spongeCase(String sentence) {
-    return null;
+    if(sentence.contains(" ")){
+      List<String> sentenceArray = Arrays.asList(sentence.split(" "));
+      return modLogic(sentenceArray);
+    }else{
+      return modLogic(sentence);
+    }
+  }
+
+  public static String modLogic(List<String> sentence){
+    String holderLine = "";
+
+    for(String item: sentence){
+      holderLine += modLogic(item) + " ";
+    }
+
+    holderLine = holderLine.substring(0, holderLine.length()-1);
+
+    return holderLine;
+  }
+
+  public static String modLogic(String sentence){
+    String holder = "";
+    Character holderChar;
+    String convert;
+
+    for(int i = 0; i < sentence.length(); i++){
+      if(i%2 == 0){
+        holderChar = sentence.charAt(i);
+        convert = holderChar.toString();
+        convert = convert.toLowerCase();
+
+        holder += convert;
+
+      }else{
+        holderChar = sentence.charAt(i);
+        convert = holderChar.toString();
+        convert = convert.toUpperCase();
+
+        holder += convert;
+      }
+    }
+
+    return holder;
   }
 
 
