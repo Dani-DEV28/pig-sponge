@@ -55,13 +55,17 @@ public class Pig {
 
     public static String modLogic(List<String> sentence){
 
-        for(int i = 0; i < sentence.size(); i++){
-            char saveFirstLetter = sentence.get(i).charAt(0);
+        // for(int i = 0; i < sentence.size(); i++){
+        //     char saveFirstLetter = sentence.get(i).charAt(0);
 
-            if(!VOWELS.contains(saveFirstLetter)){
-                String modWord = sentence.get(i).substring(1) + saveFirstLetter + "ay";
-                sentence.set(i, modWord);
-            }
+        //     if(!VOWELS.contains(saveFirstLetter)){
+        //         String modWord = sentence.get(i).substring(1) + saveFirstLetter + "ay";
+        //         sentence.set(i, modWord);
+        //     }
+        // }
+
+        for(int i = 0; i < sentence.size(); i++){
+            sentence.set(i, modLogic(sentence.get(i)));
         }
 
         String finalLine = "";
