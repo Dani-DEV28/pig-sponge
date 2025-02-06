@@ -61,12 +61,10 @@ public class Sponge {
 
   public static String modLogic(String sentence){
     String holder = "";
-    Character holderChar;
-    String convert;
 
     for(int i = 0; i < sentence.length(); i++){
-      holderChar = sentence.charAt(i);
-      convert = holderChar.toString();
+      Character holderChar = sentence.charAt(i);
+      String convert = holderChar.toString();
 
       if(i%2 == 0){
         convert = convert.toLowerCase();
