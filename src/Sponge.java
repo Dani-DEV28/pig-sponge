@@ -65,20 +65,16 @@ public class Sponge {
     String convert;
 
     for(int i = 0; i < sentence.length(); i++){
+      holderChar = sentence.charAt(i);
+      convert = holderChar.toString();
+
       if(i%2 == 0){
-        holderChar = sentence.charAt(i);
-        convert = holderChar.toString();
         convert = convert.toLowerCase();
-
-        holder += convert;
-
       }else{
-        holderChar = sentence.charAt(i);
-        convert = holderChar.toString();
         convert = convert.toUpperCase();
-
-        holder += convert;
       }
+      
+      holder += convert;
     }
 
     return holder;
